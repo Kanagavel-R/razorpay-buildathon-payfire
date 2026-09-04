@@ -1,0 +1,31 @@
+services:
+  - type: web
+    name: payfire-backend
+    runtime: python
+    region: oregon
+    plan: free
+    rootDir: backend
+    buildCommand: pip install --upgrade pip && pip install -r requirements.txt
+    startCommand: uvicorn app.main:app --host 0.0.0.0 --port $PORT
+    healthCheckPath: /api/health
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.11.9
+      - key: ENVIRONMENT
+        value: production
+      - key: DEBUG
+        value: "false"
+      - key: APP_NAME
+        value: PayFire
+      - key: DATABASE_URL
+        value: sqlite:///./payfire.db
+      - key: MAX_RETRY_ATTEMPTS
+        value: "3"
+      - key: HIGH_VALUE_THRESHOLD_INR
+        value: "10000.0"
+      - key: CONFIDENCE_THRESHOLD
+        value: "0.75"
+      - key: RETRY_COOLDOWN_SECONDS
+        value: "60"
+      - key: SECONDARY_ROUTE_CIRCUIT_BREAKER_FAIL_RATE
+        value: "0.25"
