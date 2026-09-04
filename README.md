@@ -357,4 +357,6 @@ cd frontend && npm run build
 
 ## 📄 License
 
-Developed for the **Razorpay AI Buildathon 2026**. Apache 2.0 License.
+This project is licensed under the **MIT License**.
+
+Developed as an independent submission for the **Razorpay AI Buildathon 2026**
