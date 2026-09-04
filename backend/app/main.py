@@ -45,6 +45,12 @@ app.include_router(execution.router, prefix="/api")
 app.include_router(audit.router, prefix="/api")
 
 
+@app.get("/health")
+def health_check():
+    """Simple health check endpoint for Render default health probes."""
+    return {"status": "healthy"}
+
+
 @app.get("/")
 def root():
     return {
